@@ -2,11 +2,6 @@
 
 # Curso JavaScript Essentials 2 de Cisco NetAcad.
 Capturas 
-<img width="959" alt="netacat5" src="https://github.com/user-attachments/assets/80553424-4489-462e-8dbb-9a8eb4a77d8c" />
-<img width="954" alt="netacat1" src="https://github.com/user-attachments/assets/254697c8-3045-40b8-8d98-25be69a95e54" />
-<img width="959" alt="netacat2" src="https://github.com/user-attachments/assets/24087ddb-5086-4414-85ea-be6109a23249" />
-<img width="954" alt="netacat3" src="https://github.com/user-attachments/assets/103882f2-30da-4ee4-b321-e615bb62470a" />
-<img width="952" alt="netacat4" src="https://github.com/user-attachments/assets/160129cd-3da1-4507-ad83-00b3e181db13" />
 
 # Ejercicio 1: Comunicación Serial con Conversión de Datos
 En lugar de solo enviar datos, el ESP32 deberá convertir la señal analógica de
@@ -15,10 +10,9 @@ un sensor en datos legibles en la PC.
 un sensor en datos de temperatura o humedad y los envíe a la PC.
 
 # Codigo:
+
 from machine import ADC, Pin
 from time import sleep
-
-#Configuramos el pin 34 como entrada analógica
 sensor = ADC(Pin(34))
 sensor.atten(ADC.ATTN_11DB)   # Para medir hasta 3.3V
 sensor.width(ADC.WIDTH_10BIT)  # Rango de 0-1023
