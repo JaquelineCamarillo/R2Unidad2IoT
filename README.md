@@ -15,11 +15,10 @@ un sensor en datos legibles en la PC.
 un sensor en datos de temperatura o humedad y los envíe a la PC.
 
 # Codigo:
-python
 from machine import ADC, Pin
 from time import sleep
 
-# Configuramos el pin 13 como entrada analógica
+#Configuramos el pin 34 como entrada analógica
 sensor = ADC(Pin(34))
 sensor.atten(ADC.ATTN_11DB)   # Para medir hasta 3.3V
 sensor.width(ADC.WIDTH_10BIT)  # Rango de 0-1023
