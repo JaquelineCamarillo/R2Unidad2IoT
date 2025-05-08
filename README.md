@@ -349,7 +349,198 @@ de datos en la nube o local.
                 print("Error al enviar:", e)
             time.sleep(5)
 
-## 
+## server.js
+        const net = require('net');
+        const sqlite3 = require('sqlite3').verbose();
+        const db = new sqlite3.Database('./datos.db');
+
+        // Crear tabla si no existe
+        db.run(`CREATE TABLE IF NOT EXISTS lecturas (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        valor TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`);
+
+        // Servidor TCP
+        const server = net.createServer((socket) => {
+            console.log('Cliente conectado');
+
+            socket.on('data', (data) => {
+                // Guardar solo el valor de temperatura
+                const recibido = data.toString().trim(); // Ejemplo de formato: "temperatura=25.45"
+                const valor = recibido.split('=')[1]; // Extrae el valor numérico
+                db.run('INSERT INTO lecturas (valor) VALUES (?)', [valor], (err) => {
+                    if (err) {
+                        return console.error(err.message);
+                    }
+                    console.log('Dato guardado en SQLite');
+                });
+            });
+
+            socket.on('end', () => {
+                console.log('Cliente desconectado');
+            });
+        });
+
+        // Iniciar el servidor TCP
+        server.listen(3000, () => {
+            console.log('Servidor TCP escuchando en puerto 3000');
+        });
+
+
+## web.js
+    const express = require('express');
+    const sqlite3 = require('sqlite3').verbose();
+    const app = express();
+    const port = 3001;  // Cambié el puerto a 3001
+    const path = require('path');  // Importar el módulo path
+
+    // Crear o abrir la base de datos
+    const db = new sqlite3.Database('./datos.db');
+    // Configurar para servir archivos estáticos (como HTML, CSS, JS)
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    // Endpoint para obtener las lecturas desde la base de datos
+    app.get('/api/lecturas', (req, res) => {
+      db.all('SELECT * FROM lecturas ORDER BY timestamp DESC', [], (err, rows) => {
+        if (err) {
+          return res.status(500).json({ error: err.message });
+        }
+        res.json(rows);  // Enviar los resultados como JSON
+      });
+    });
+
+    // Iniciar el servidor Express
+    app.listen(port, () => {
+      console.log(`Servidor HTTP corriendo en http://localhost:${port}`);
+    });
+
+## Public/index.html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title>Lecturas del Sensor</title>
+      <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: #f0f2f5;
+          margin: 0;
+          padding: 0;
+        }
+
+        .container {
+          max-width: 900px;
+          margin: 40px auto;
+          background: #fff;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 30px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          background-color: #fff;
+        }
+
+        thead {
+          background-color: #007BFF;
+          color: white;
+        }
+
+        th, td {
+          padding: 12px 15px;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+          background-color: #f1f1f1;
+        }
+
+        td:nth-child(2) {
+          font-weight: bold;
+          color: #d63384;
+        }
+
+        @media (max-width: 600px) {
+          .container {
+            padding: 15px;
+          }
+
+          table, thead, tbody, th, td, tr {
+            display: block;
+            text-align: right;
+          }
+
+          thead {
+            display: none;
+          }
+
+          tr {
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+          }
+
+          td {
+            padding: 10px;
+            position: relative;
+          }
+
+          td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            font-weight: bold;
+            color: #555;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Lecturas del Sensor</h1>
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Temperatura (°C)</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <script>
+        fetch('http://localhost:3001/api/lecturas')
+          .then(res => res.json())
+          .then(data => {
+            const tbody = document.querySelector('#tabla tbody');
+            data.forEach(fila => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td data-label="ID">${fila.id}</td>
+                <td data-label="Temperatura">${fila.valor} °C</td>
+                <td data-label="Fecha">${fila.timestamp}</td>
+              `;
+              tbody.appendChild(tr);
+            });
+          })
+          .catch(err => {
+            console.error('Error al obtener los datos:', err);
+          });
+      </script>
+    </body>
+    </html>
+
   
 # Diagrama de conexion:
 ![image](https://github.com/user-attachments/assets/8475ea14-65a7-485a-840c-825666d60e82)
