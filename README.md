@@ -2,6 +2,12 @@
 
 # Curso JavaScript Essentials 2 de Cisco NetAcad.
 Capturas 
+![image](https://github.com/user-attachments/assets/2e32c06c-884c-4ce7-b771-f88598d8e6ae)
+![image](https://github.com/user-attachments/assets/a380681d-3860-4840-98a8-f4a9d2cf94d5)
+![image](https://github.com/user-attachments/assets/1f4d848e-ad16-4ac5-a9ca-3119bbd9d4fc)
+![image](https://github.com/user-attachments/assets/4c5e40d0-206a-4d4a-862d-f59747f4a50f)
+![image](https://github.com/user-attachments/assets/387e048f-5e16-468f-91de-4fe5332a9839)
+
 
 # Ejercicio 1: Comunicación Serial con Conversión de Datos
 En lugar de solo enviar datos, el ESP32 deberá convertir la señal analógica de
