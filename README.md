@@ -1,5 +1,5 @@
 # R2Unidad2IoT
-
+## Juana Jaqueline Camarillo Olaez
 # Curso JavaScript Essentials 2 de Cisco NetAcad.
 Capturas 
 ![image](https://github.com/user-attachments/assets/2e32c06c-884c-4ce7-b771-f88598d8e6ae)
@@ -42,7 +42,7 @@ un sensor en datos de temperatura o humedad y los envíe a la PC.
 https://app.cirkitdesigner.com/project/e167f63f-3f83-4efb-8715-f4efb6f4180d
 # Video Demostrativo:
 
-TU VIDEO 
+https://drive.google.com/file/d/1ppaDaq1yY8j01wml8BvXqY_G36V2DAr6/view?usp=sharing
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -301,8 +301,8 @@ comandos a un ESP32 para encender/apagar un LED o mover un servo.
 https://app.cirkitdesigner.com/project/1ef0d36e-f27e-43f4-8a82-1f50b2a3a1cf
 
 # Video Demostrativo:
-
-TU VIDEO 
+https://drive.google.com/file/d/1N_5uSYCn2mDcxZRihNJNQ8O-zFBSUmbL/view?usp=sharing
+https://drive.google.com/file/d/1ZJ3z1LFTrvK3uDXKCEAtmASMCrj8OZ0x/view?usp=sharing
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -559,8 +559,7 @@ de datos en la nube o local.
 https://app.cirkitdesigner.com/project/e167f63f-3f83-4efb-8715-f4efb6f4180d
 
 # Video Demostrativo:
-
-TU VIDEO 
+https://drive.google.com/file/d/1SE3qtyY9qSg3TJYmA3AfNMQ9mpdlfgq-/view?usp=sharing
 
 ////////////////////////////////////////////////////////////////////////////
 # Ejercicio 4: Envío de Notificaciones con Discord Webhooks:
@@ -630,7 +629,7 @@ https://app.cirkitdesigner.com/project/e167f63f-3f83-4efb-8715-f4efb6f4180d
 
 # Video Demostrativo:
 
-TU VIDEO 
+https://drive.google.com/file/d/12nBZMbUTrxo8oTNM2a1xLzAmCd0H-Uv-/view?usp=sharing
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -643,7 +642,3 @@ Coevaluación
 Durante el desarrollo del proyecto, observé en mí una actitud constante de esfuerzo y compromiso. A lo largo de las distintas etapas, trabajé intensamente para cumplir con los objetivos técnicos y personales del proyecto. Aunque atravesé momentos de procrastinación, algo que reconozco como una de mis principales debilidades, supe retomar el ritmo gracias a mi insistencia y perseverancia cuando las cosas no salían como esperaba.
 
 Me caractericé por no rendirme fácilmente ante los problemas: cada vez que algo no funcionaba, busqué soluciones con insistencia, investigando y probando diferentes alternativas hasta dar con una respuesta satisfactoria. Esa actitud me permitió avanzar incluso en momentos de dificultad técnica o falta de claridad en las instrucciones.
-
-Mi participación fue activa y comprometida, tanto en el trabajo individual como en la colaboración con el equipo. Aunque reconozco que pude haber manejado mejor mi tiempo en algunos momentos, logré completar las tareas asignadas y participar en las discusiones técnicas, aportando ideas y soluciones basadas en lo que iba aprendiendo. Esta experiencia me ayudó a identificar mis áreas de mejora, especialmente en la gestión personal del tiempo, pero también a reforzar mis fortalezas como la resiliencia y la capacidad de aprendizaje autónomo.
-
-En general, considero que mi desempeño fue positivo: aprendí mucho, enfrenté mis limitaciones y las usé como impulso para crecer. Este proyecto fue una oportunidad para reafirmar mi compromiso con el desarrollo técnico y personal, y para seguir construyendo una base sólida en el ámbito de la tecnología.
