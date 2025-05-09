@@ -574,15 +574,15 @@ cuando un sensor detecte un evento.
         import time
         import json
         from machine import Pin
-        import dht  # Importamos sensor DHT
+        import dht  # Librería para sensores DHT (DHT11 / DHT22)
 
-        # Configuración
-        SSID = "INFINITUMF116_EXT"
-        PASSWORD = "X4s9xzFrsx"
-        WEBHOOK_URL = "https://discord.com/api/webhooks/1369521823653302422/gkEHkoV1pZBmu_2RYUSKhrNQh3Lc7hx_xl_LmSAycb48Xgsv05I1INmPiq626lJJI4BY"
+        # Configuración WiFi y Webhook de Discord
+        SSID = "JAQUELINE"
+        PASSWORD = "12345678"
+        WEBHOOK_URL = "https://discord.com/api/webhooks/1370209125182472273/8QrsDimtkimet2RnTOVVxXiV7Oppsym7b0mrsQvnXX6DrLd290Fqzrl5rqb8i4hDoKrv"
 
-        # Sensor de temperatura y humedad DHT22 en pin 15 (puedes cambiarlo)
-        sensor_dht = dht.DHT22(Pin(14))
+        # Sensor RQ-S003 (compatible con DHT11) en pin 14
+        sensor_dht = dht.DHT11(Pin(14))
 
         def conectar_wifi():
             wlan = network.WLAN(network.STA_IF)
@@ -600,7 +600,6 @@ cuando un sensor detecte un evento.
             try:
                 respuesta = urequests.post(WEBHOOK_URL, data=cuerpo.encode('utf-8'), headers=headers)
                 print("Mensaje enviado. Código:", respuesta.status_code)
-                print("Respuesta:", respuesta.text)
                 respuesta.close()
             except Exception as e:
                 print("Error al enviar:", e)
