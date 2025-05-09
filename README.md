@@ -20,17 +20,20 @@ un sensor en datos de temperatura o humedad y los envíe a la PC.
     from machine import ADC, Pin
     from time import sleep
 
+    # Configurar pin analógico (GPIO34)
     sensor = ADC(Pin(34))
-        sensor.atten(ADC.ATTN_11DB)   # Para medir hasta 3.3V
-        sensor.width(ADC.WIDTH_10BIT)  # Rango de 0-1023
+    sensor.atten(ADC.ATTN_11DB)  # Rango de 0 a ~3.3V
+    sensor.width(ADC.WIDTH_12BIT)  # Resolución de 12 bits (0-4095)
 
     while True:
-        valor = sensor.read()  # Leemos el valor ADC (0-1023)
-        voltaje = valor * (3.3 / 1023.0)  # Convertimos a voltaje
-        temperatura = voltaje * 100  # 10mV = 1°C para el LM35
-
-        print("Temperatura: {:.2f} °C".format(temperatura))
+        raw = sensor.read()  # Leer valor crudo
+        voltage = raw * 3.3 / 4095  # Convertir a voltaje (0 - 3.3V)
+        temperature = voltage * 100  # LM35 da 10mV/°C → multiplicamos por 100
+    
+        print("Temperatura: {:.2f} °C".format(temperature))
         sleep(1)
+
+
 
 
 # Diagrama de conexion:
