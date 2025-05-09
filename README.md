@@ -320,11 +320,12 @@ de datos en la nube o local.
         import time
 
         # Conexión Wi-Fi
-        ssid = 'INFINITUMF116_EXT'
-        password = 'X4s9xzFrsx'
+        ssid ='JAQUELINE'
+        password ='12345678'
 
         sta = network.WLAN(network.STA_IF)
         sta.active(True)
+        time.sleep(2)  # Espera para que se active correctamente
         sta.connect(ssid, password)
 
         while not sta.isconnected():
@@ -341,7 +342,7 @@ de datos en la nube o local.
         while True:
             try:
                 s = socket.socket()
-                s.connect(('192.168.1.201', 3000))  # IP del servidor
+                s.connect(('192.168.209.182', 3000))  # IP del servidor
                 valor = sensor.read()  # 0 - 4095
 
                 # Convertir la lectura ADC (0-4095) a voltaje (0-3.3V)
@@ -357,6 +358,7 @@ de datos en la nube o local.
             except Exception as e:
                 print("Error al enviar:", e)
             time.sleep(5)
+
 
 ## server.js
         const net = require('net');
